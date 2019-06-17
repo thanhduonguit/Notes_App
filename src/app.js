@@ -5,7 +5,6 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
-
 const app = express()
 
 // Require
@@ -27,13 +26,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Middlewares
 app.use(express.urlencoded({ extended: false }))
-app.use(methodOverride('_method'))    //sử dụng trong file edit
+//sử dụng trong file edit
+app.use(methodOverride('_method'))    
 app.use(session({
   secret: 'secret',
   resave: true,
   saveUninitialized: true
 }))
-
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
